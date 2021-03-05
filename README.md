@@ -5,3 +5,25 @@
 ```
 composer require gemini/cache
 ```
+
+## Support key `this` for `Cacheable` `CachePut` and `CacheEvict`
+
+```php
+<?php
+
+use Gemini\Cache\Annotation\Cacheable;
+
+class UserService
+{
+    public $id = 1;
+    
+    /**
+     * @Cacheable(prefix="test", value="#{this.id}")
+     */
+    function getCache(){
+        return uniqid();
+    }
+}
+
+$service = (new UserService())->getCache(); // The cache key is test:1
+```
