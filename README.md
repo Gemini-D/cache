@@ -6,7 +6,7 @@
 composer require gemini/cache
 ```
 
-## Support key `this` for `Cacheable` `CachePut` and `CacheEvict`
+## 支持使用 this 获取当前实例的成员变量
 
 ```php
 <?php
@@ -16,14 +16,16 @@ use Gemini\Cache\Annotation\Cacheable;
 class UserService
 {
     public $id = 1;
-    
+
     /**
      * @Cacheable(prefix="test", value="#{this.id}")
      */
-    function getCache(){
+    function getCache()
+    {
         return uniqid();
     }
 }
 
-$service = (new UserService())->getCache(); // The cache key is test:1
+$res = (new UserService())->getCache(); // 生成的缓存 KEY 为 test:1
+
 ```
