@@ -29,3 +29,18 @@ class UserService
 $res = (new UserService())->getCache(); // 生成的缓存 KEY 为 test:1
 
 ```
+
+
+## 使用 MD5 格式化缓存 KEY
+
+配置映射关系，修改 `dependencies.php`
+
+```php
+<?php
+
+return [
+    Hyperf\Cache\AnnotationManager::class => Gemini\Cache\AnnotationManager::class
+];
+```
+
+再使用 `Cacheable` 注解时，`KEY` 值便会被转化为 `prefix:md5` 的格式。
