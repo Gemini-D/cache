@@ -11,7 +11,7 @@ declare(strict_types=1);
  */
 namespace Gemini\Cache\Aspect;
 
-use Gemini\Cache\Annotation\Cacheable;
+use Hyperf\Cache\Annotation\Cacheable;
 use Hyperf\Cache\Driver\KeyCollectorInterface;
 use Hyperf\Di\Aop\ProceedingJoinPoint;
 
