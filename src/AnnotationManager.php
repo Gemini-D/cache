@@ -19,6 +19,14 @@ class AnnotationManager extends \Hyperf\Cache\AnnotationManager
             return parent::getFormatedKey($prefix, $arguments, $value);
         }
 
-        return $prefix . ':' . md5(serialize($arguments));
+        $formatted = [];
+        foreach ($arguments as $key => $argument) {
+            // Ignore $this, it will be conflicted with `Hyperf\Cache\Listener\DeleteListener`.
+            if ($key !== 'this') {
+                $formatted[] = $argument;
+            }
+        }
+
+        return $prefix . ':' . md5(serialize($formatted));
     }
 }
