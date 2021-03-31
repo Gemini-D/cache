@@ -8,10 +8,22 @@ composer require gemini/cache
 
 ## 支持使用 this 获取当前实例的成员变量
 
+配置映射关系，修改 `dependencies.php`
+
 ```php
 <?php
 
-use Gemini\Cache\Annotation\Cacheable;
+return [
+    Hyperf\Cache\Aspect\CacheableAspect::class => Gemini\Cache\Aspect\CacheableAspect::class,
+];
+```
+
+修改代码
+
+```php
+<?php
+
+use Hyperf\Cache\Annotation\Cacheable;
 
 class UserService
 {

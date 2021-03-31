@@ -13,18 +13,10 @@ namespace Gemini\Cache\Aspect;
 
 use Gemini\Cache\Annotation\Cacheable;
 use Hyperf\Cache\Driver\KeyCollectorInterface;
-use Hyperf\Di\Annotation\Aspect;
 use Hyperf\Di\Aop\ProceedingJoinPoint;
 
-/**
- * @Aspect
- */
 class CacheableAspect extends \Hyperf\Cache\Aspect\CacheableAspect
 {
-    public $annotations = [
-        Cacheable::class,
-    ];
-
     public function process(ProceedingJoinPoint $proceedingJoinPoint)
     {
         $className = $proceedingJoinPoint->className;

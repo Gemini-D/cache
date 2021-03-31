@@ -13,18 +13,10 @@ namespace Gemini\Cache\Aspect;
 
 use Gemini\Cache\Annotation\CacheEvict;
 use Hyperf\Cache\Driver\KeyCollectorInterface;
-use Hyperf\Di\Annotation\Aspect;
 use Hyperf\Di\Aop\ProceedingJoinPoint;
 
-/**
- * @Aspect
- */
 class CacheEvictAspect extends \Hyperf\Cache\Aspect\CacheEvictAspect
 {
-    public $annotations = [
-        CacheEvict::class,
-    ];
-
     public function process(ProceedingJoinPoint $proceedingJoinPoint)
     {
         $className = $proceedingJoinPoint->className;

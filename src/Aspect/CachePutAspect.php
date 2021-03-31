@@ -11,19 +11,10 @@ declare(strict_types=1);
  */
 namespace Gemini\Cache\Aspect;
 
-use Gemini\Cache\Annotation\CachePut;
-use Hyperf\Di\Annotation\Aspect;
 use Hyperf\Di\Aop\ProceedingJoinPoint;
 
-/**
- * @Aspect
- */
 class CachePutAspect extends \Hyperf\Cache\Aspect\CachePutAspect
 {
-    public $annotations = [
-        CachePut::class,
-    ];
-
     public function process(ProceedingJoinPoint $proceedingJoinPoint)
     {
         $className = $proceedingJoinPoint->className;
