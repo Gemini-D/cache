@@ -33,5 +33,8 @@ class AnnotationManagerTest extends AbstractTestCase
 
         $key = $manager->getFormatedKey('test', [new \stdClass(), 123]);
         $this->assertSame('test:78809ca5903f2cc2568a61c75333faaa', $key);
+
+        $key = $manager->getFormatedKey('test', ['o' => new \stdClass(), 'id' => 123]);
+        $this->assertSame('test:78809ca5903f2cc2568a61c75333faaa', $key);
     }
 }
